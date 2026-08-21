@@ -9,16 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get project
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Android APK
+      - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
         with:
           workdir: .
+          buildozer_version: stable
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: MedTime-APK
-          path: bin/*.apk
+          path: ${{ steps.buildozer.outputs.filename }}
