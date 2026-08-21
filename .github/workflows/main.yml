@@ -1,0 +1,24 @@
+name: Build MedTime APK
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Build Android APK
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          workdir: .
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: MedTime-APK
+          path: bin/*.apk
