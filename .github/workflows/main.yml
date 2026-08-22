@@ -14,7 +14,7 @@ jobs:
 
       - name: Build APK
         run: |
-          docker pull kivy/buildozer:stable
+          docker pull kivy/buildozer:latest
           docker run --rm \
             -v "${{ github.workspace }}:/home/user/hostcwd" \
             -e ACCEPT_ANDROID_SDK_LICENSE=1 \
