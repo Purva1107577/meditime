@@ -17,6 +17,7 @@ jobs:
           docker pull kivy/buildozer:latest
           docker run --rm \
             -v "${{ github.workspace }}:/home/user/hostcwd" \
+            -e ACCEPT_ANDROID_SDK_LICENSE=1 \
             kivy/buildozer:latest \
             android debug
 
